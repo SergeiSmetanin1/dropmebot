@@ -1,0 +1,14 @@
+# Personal credentials, chats and portable profiles must never be published.
+.env
+.env.*
+!.env.example
+*.profile
+*.profile.*
+.dropme-data.json*
+*.log
+node_modules/
+work/
+dist/
+DropMePortable.zip
+screenshots/
+.codex-remote-attachments/
