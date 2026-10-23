@@ -49,6 +49,9 @@ if ($index -lt 0) { throw 'Node SEA fuse missing.' }
 $bytes[$index+$fuse.Length-1] = 49
 [IO.File]::WriteAllBytes($coreFile,$bytes)
 Copy-Item -LiteralPath (Join-Path $components 'DropMe.exe') -Destination (Join-Path $output 'DropMe.exe')
+Copy-Item -LiteralPath (Join-Path $components 'DropMe.Updater.exe') -Destination (Join-Path $output 'DropMe.Updater.exe')
+$installedVersion = @{version=$manifest.version;repository='SergeiSmetanin1/dropmebot'} | ConvertTo-Json -Compress
+[IO.File]::WriteAllText((Join-Path $output 'version.json'),$installedVersion)
 Copy-Item -LiteralPath (Join-Path $components 'README.txt') -Destination (Join-Path $output 'README.txt')
 Copy-Item -LiteralPath (Join-Path $components 'NODE-LICENSE.txt') -Destination (Join-Path $licenses 'NODE-LICENSE.txt')
 
@@ -70,7 +73,7 @@ if ($LASTEXITCODE -ne 0) { throw 'FFmpeg license unavailable.' }
 $buildInfo = $version + "`n" + $license + "`nSource and build recipes: https://github.com/yt-dlp/FFmpeg-Builds`nFFmpeg source: https://github.com/FFmpeg/FFmpeg`n"
 [IO.File]::WriteAllText((Join-Path $licenses 'FFMPEG-BUILD.txt'),$buildInfo)
 
-$permitted = @('DropMe.exe','DropMe.core.exe','ffmpeg.exe','README.txt','licenses')
+$permitted = @('DropMe.exe','DropMe.core.exe','DropMe.Updater.exe','ffmpeg.exe','README.txt','version.json','licenses')
 foreach ($item in Get-ChildItem -LiteralPath $output -Force) {
     if ($item.Name -notin $permitted) { throw "Unexpected distribution file: $($item.Name)" }
 }
