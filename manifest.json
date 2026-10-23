@@ -4,5 +4,5 @@
   "nodeUrl": "https://nodejs.org/dist/v24.13.0/win-x64/node.exe",
   "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
   "ffmpegUrl": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip",
-  "ffmpegSha256": "926c7f5f4885c011e72c1ad03647edaf69f04e1831f144e1987928efbced87c6"
+  "ffmpegSha256": "2353c41981c5c35e747a262b8d37fbc52d77a42669f754456a841ecd8eee2262"
 }
